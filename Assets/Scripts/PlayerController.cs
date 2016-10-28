@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
   Vector3 _velocity;
   Vector3 _eulerAngleVelocity;
   float _speed;
-
+  bool _rotate = false;
   Rigidbody _rigidbody;
   void Awake()
   {
@@ -28,26 +28,26 @@ public class PlayerController : MonoBehaviour
   }
   void FixedUpdate()
   {
-    //_rigidbody.velocity = _velocity;
-
-
-    if (_speed > _rigidbody.velocity.magnitude)
-    {
-     // _rigidbody.AddRelativeForce(_velocity, ForceMode.VelocityChange);
-    }
+    //Move
     _rigidbody.MovePosition(transform.position + _velocity * Time.deltaTime);
 
-    var _deltaRotation = Quaternion.Euler(_eulerAngleVelocity * Time.deltaTime);
-    _rigidbody.MoveRotation(_rigidbody.rotation * _deltaRotation);
+    //Rotate
+    if (_rotate)
+    {
+      float turn = _speed * _eulerAngleVelocity.y * Time.deltaTime;
+      var _deltaRotation = Quaternion.Euler(_eulerAngleVelocity * _speed * Time.deltaTime);
+      _rigidbody.MoveRotation(_rigidbody.rotation * _deltaRotation);
+    }
   }
-
   public void Rotate(Vector3 eulerAngleVelocity)
   {
     _eulerAngleVelocity = eulerAngleVelocity;
-
-
+    _rotate = true;
   }
-
+  public void StopRotate()
+  {
+    _rotate = false;
+  }
   public void Reset()
   {
     _eulerAngleVelocity = Vector3.zero;
@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     _rigidbody.angularVelocity = new Vector3(0f, 0f, 0f);
     _playerStartPos.UpdateTransform(transform);
   }
+
+
 
   struct PlayerStartTransform
   {

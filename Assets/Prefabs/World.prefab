@@ -40,6 +40,7 @@ GameObject:
   - 4: {fileID: 4000010285088528}
   - 114: {fileID: 114000012385959462}
   - 114: {fileID: 114000011973893996}
+  - 114: {fileID: 114000012703135572}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -150,7 +151,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 04b6ba0d80caf8345a1baeb62934169b, type: 2}
@@ -320,6 +321,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc39f3d2335936c47bdbd90484a82c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012703135572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011236493528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745527a885261834ba99f7137975de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atStartRestartGameObjects:
+  - {fileID: 0}
+  duringRestartGameObjects:
+  - {fileID: 1000011705469636}
 --- !u!135 &135000011953387992
 SphereCollider:
   m_ObjectHideFlags: 1

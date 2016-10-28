@@ -31,19 +31,29 @@ public class ScoreController : MonoBehaviour
     _running = true;
     _stopwatch.Start();
     StartCoroutine(Runner());
-    //InvokeRepeating("SetUIScore", float.Epsilon, 0.1f);
+  }
+  void SubmitScore()
+  {
 
   }
   void SetUIScore()
   {
     _scoreText.text = FormatTime(_stopwatch);
   }
+
+  internal long GetScore()
+  {
+    return _stopwatch.ElapsedMilliseconds;
+  }
+
+
+
   IEnumerator Runner()
   {
     while (_running)
     {
       _scoreText.text = FormatTime(_stopwatch);
-      yield return null;
+      yield return new WaitForSeconds(0.01f);
     }
     yield return null;
   }

@@ -3,10 +3,16 @@ using System.Collections;
 using System;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IRestartableCommand
 {
+  public float minSpeed = 5;
+  public float maxSpeed = 15;
+
   public float moveSpeed = 5;
+
   public Vector3 rotationSpeed = new Vector3(0, 5, 0);
+
+
   bool _running = false;
 
   PlayerController _playerController;
@@ -14,22 +20,17 @@ public class Player : MonoBehaviour
 
   void Awake()
   {
-
     _playerController = GetComponent<PlayerController>();
-
     GameController.OnGameStateChanged += OnGameStateChanged;
-    GameController.OnRestart += OnRestart;
   }
 
   private void OnGameStateChanged()
   {
-
     switch (GameController.Instance.GameState)
     {
       case GameState.Playing:
         Begin();
         break;
-
     }
   }
   void Start()
@@ -38,6 +39,11 @@ public class Player : MonoBehaviour
   void Begin()
   {
     print("Player: Begin()");
+    LeanTween.value(gameObject, minSpeed, maxSpeed, 60f).setOnUpdate((float speed) =>
+    {
+      moveSpeed = speed;
+    });
+
     _running = true;
   }
   // Update is called once per frame
@@ -47,10 +53,9 @@ public class Player : MonoBehaviour
   }
   void OnDisable()
   {
-    GameController.OnRestart -= OnRestart;
     GameController.OnGameStateChanged -= OnGameStateChanged;
   }
-  public void OnRestart()
+  void OnRestart()
   {
     print("Player: Restart()");
     _running = false;
@@ -61,13 +66,18 @@ public class Player : MonoBehaviour
   {
     if (!_running) return;
     if (Input.GetMouseButton(0))
+    {
       _playerController.Rotate(rotationSpeed);
+    }
     else
     {
-      _playerController.Rotate(new Vector3(0, 0, 0));
+      _playerController.StopRotate();
     }
     _playerController.Move(moveSpeed);
   }
 
-
+  public void Execute()
+  {
+    OnRestart();
+  }
 }

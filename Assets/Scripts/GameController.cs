@@ -19,14 +19,15 @@ public class GameController
   }
   public static event Action OnPlayerHitDeathTrigger;
   public static event Action OnRestart;
+  public static event Action OnGameStateChanged;
   public void StartMenu()
   {
     hasStarted = true;
     UIManager.OnPlayButtonClicked += OnPlayClicked;
-    GameState = GameState.InMenu;
+    GameState = GameState.Intro;
   }
   private bool hasStarted = false;
-  public static event Action OnGameStateChanged;
+
   private GameState _gameState;
   public GameState GameState
   {
@@ -43,6 +44,16 @@ public class GameController
       }
     }
   }
+  private long _time = -1;
+  public long GetTime()
+  {
+    return _time;
+  }
+  internal void SubmitScore(long time)
+  {
+    _time = time;
+  }
+
   public GameController()
   {
 
@@ -53,12 +64,25 @@ public class GameController
 
     if (GameState == GameState.GameOver)
     {
+      GameState = GameState.Restarting;
+      if (OnRestart != null)
+      {
+        OnRestart();
+      }
+    }
+  }
+  public void IntroDone()
+  {
+    if (GameState == GameState.Intro)
+    {
       GameState = GameState.InMenu;
     }
-    //   GameManager.Instance.Restart();
-    if (OnRestart != null)
+  }
+  public void RestartDone()
+  {
+    if (GameState == GameState.Restarting)
     {
-      OnRestart();
+      GameState = GameState.InMenu;
     }
   }
   void OnPlayClicked()
@@ -77,5 +101,5 @@ public class GameController
 }
 public enum GameState
 {
-  Undefined, InMenu, Waiting, Playing, GameOver
+  Undefined, Intro, InMenu, Waiting, Playing, GameOver, Restarting
 }
