@@ -31,8 +31,6 @@ public class Restart : MonoBehaviour
   }
   public void AtStart()
   {
-
-
     if (headerRotationEffect != null)
       headerRotationEffect.ExecuteDuration(restartDuration);
     Invoke("OnFinished", restartDuration);

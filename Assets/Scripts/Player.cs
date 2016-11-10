@@ -7,17 +7,15 @@ public class Player : MonoBehaviour, IRestartableCommand
 {
   public float minSpeed = 5;
   public float maxSpeed = 15;
-
+  public float increasingSpeedDuration = 60f;
   public float moveSpeed = 5;
 
   public Vector3 rotationSpeed = new Vector3(0, 5, 0);
 
-
+  int speedTweenId = -1;
   bool _running = false;
 
   PlayerController _playerController;
-
-
   void Awake()
   {
     _playerController = GetComponent<PlayerController>();
@@ -33,17 +31,13 @@ public class Player : MonoBehaviour, IRestartableCommand
         break;
     }
   }
-  void Start()
-  {
-  }
   void Begin()
   {
     print("Player: Begin()");
-    LeanTween.value(gameObject, minSpeed, maxSpeed, 60f).setOnUpdate((float speed) =>
+    speedTweenId = LeanTween.value(gameObject, minSpeed, maxSpeed, increasingSpeedDuration).setOnUpdate((float speed) =>
     {
       moveSpeed = speed;
-    });
-
+    }).id;
     _running = true;
   }
   // Update is called once per frame
@@ -60,7 +54,7 @@ public class Player : MonoBehaviour, IRestartableCommand
     print("Player: Restart()");
     _running = false;
     _playerController.Reset();
-
+    LeanTween.cancel(speedTweenId);
   }
   private void MoveInput()
   {
@@ -75,7 +69,6 @@ public class Player : MonoBehaviour, IRestartableCommand
     }
     _playerController.Move(moveSpeed);
   }
-
   public void Execute()
   {
     OnRestart();

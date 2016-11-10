@@ -8,10 +8,13 @@ public class RotatorRestartEffect : MonoBehaviour, IRestartableDurationCommand
 {
   public int rotations = 5;
   public AnimationCurve animationCurve;
+
+  public LeanTweenType tweenType;
   public void ExecuteDuration(float duration)
   {
     print("RotatorRestartEffect: Execute()");
-    StartCoroutine(Rotate(duration));
+    //StartCoroutine(Rotate(duration));
+    RotateLeanTween(duration);
   }
 
   IEnumerator Rotate(float duration)
@@ -41,7 +44,17 @@ public class RotatorRestartEffect : MonoBehaviour, IRestartableDurationCommand
     }
   }
 
-
+  private void RotateLeanTween(float duration)
+  {
+    Vector3 originalRotation = transform.localEulerAngles;
+    Vector3 toRotation = originalRotation;
+    toRotation.y += rotations * 360f;
+    Blur(true);
+    LeanTween.rotate(gameObject, toRotation, duration).setEase(tweenType).setOnComplete(() =>
+    {
+      Blur(false);
+    });
+  }
 
 
 }

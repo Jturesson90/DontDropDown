@@ -4,7 +4,6 @@ using System;
 
 public class DeathTrigger : MonoBehaviour
 {
-  public bool debugActive = false;
   private bool _triggered;
   void Awake()
   {
@@ -13,7 +12,6 @@ public class DeathTrigger : MonoBehaviour
 
   private void OnGameStateChanged()
   {
-    if (debugActive) return;
     if (GameController.Instance.GameState == GameState.Playing)
       _triggered = false;
   }
@@ -24,7 +22,10 @@ public class DeathTrigger : MonoBehaviour
     {
       if (_triggered) return;
       print("DeathTrigger: OnTriggerEnter");
-      GameController.Instance.Death();
+      if (GameController.Instance.GameState == GameState.Playing)
+      {
+        GameController.Instance.Death();
+      }
     }
   }
 }

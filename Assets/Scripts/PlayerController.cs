@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
   public void Move(Vector3 moveVelocity)
   {
     _velocity = moveVelocity;
-
   }
   public void Move(float moveSpeed)
   {

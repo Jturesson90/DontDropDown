@@ -150,7 +150,7 @@ Material:
       second: 0
     - first:
         name: _SkyExponent1
-      second: 1.5
+      second: 6.54
     - first:
         name: _SkyExponent2
       second: 2.38
@@ -199,13 +199,13 @@ Material:
       second: {r: 0.19607845, g: 0.027450982, b: 0, a: 1}
     - first:
         name: _SkyColor1
-      second: {r: 0, g: 0.4166665, b: 1, a: 0}
+      second: {r: 0.6104273, g: 0.9485294, b: 0.59980536, a: 0}
     - first:
         name: _SkyColor2
       second: {r: 0.9264706, g: 0.9068324, b: 0.7970372, a: 0}
     - first:
         name: _SkyColor3
-      second: {r: 0.9117647, g: 0.683916, b: 0.5363322, a: 0}
+      second: {r: 0.40224913, g: 0.68344414, b: 0.9117647, a: 1}
     - first:
         name: _SkyTint
       second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
