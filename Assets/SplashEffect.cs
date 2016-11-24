@@ -3,20 +3,22 @@ using System.Collections;
 
 public class SplashEffect : MonoBehaviour
 {
-  public ParticleSystem pl;
+  public GameObject splash;
   void Start()
   {
-    print("start");
   }
   void OnTriggerEnter(Collider coll)
   {
-    print("mmm");
     if (coll.transform.tag.Equals("Player"))
     {
-      pl.transform.position = coll.transform.position;
-      pl.gameObject.SetActive(false);
-      pl.gameObject.SetActive(true);
-
+      Splash(coll.transform.position);
     }
+  }
+
+  public void Splash(Vector3 position)
+  {
+    GameObject spawnedSplash = Instantiate(splash, new Vector3(position.x, transform.position.y, position.z), splash.transform.rotation) as GameObject;
+    ParticleSystem ps = spawnedSplash.GetComponent<ParticleSystem>();
+    Destroy(spawnedSplash, ps.startLifetime);
   }
 }

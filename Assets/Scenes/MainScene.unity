@@ -142,11 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f080736dcf992b54f94133c965ea327d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &538886475 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 198000013075114060, guid: b66ac9272093d4742b777ab369b82453,
-    type: 2}
-  m_PrefabInternal: {fileID: 1962730600}
 --- !u!1 &626973241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,49 +1807,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114000013552138310, guid: b66ac9272093d4742b777ab369b82453,
+    - target: {fileID: 114000013930908262, guid: b66ac9272093d4742b777ab369b82453,
         type: 2}
-      propertyPath: pl
-      value: 
-      objectReference: {fileID: 538886475}
-    - target: {fileID: 64000013122614876, guid: b66ac9272093d4742b777ab369b82453,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: edgeBlend
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 64000013122614876, guid: b66ac9272093d4742b777ab369b82453,
+    - target: {fileID: 114000013930908262, guid: b66ac9272093d4742b777ab369b82453,
         type: 2}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012467092236, guid: b66ac9272093d4742b777ab369b82453, type: 2}
-      propertyPath: m_IsActive
+      propertyPath: forceFlatShading
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198000013075114060, guid: b66ac9272093d4742b777ab369b82453,
         type: 2}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 2.27
+      propertyPath: looping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198000013075114060, guid: b66ac9272093d4742b777ab369b82453,
         type: 2}
       propertyPath: randomSeed
-      value: 47882175
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013075114060, guid: b66ac9272093d4742b777ab369b82453,
-        type: 2}
-      propertyPath: CollisionModule.collisionMessages
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013075114060, guid: b66ac9272093d4742b777ab369b82453,
-        type: 2}
-      propertyPath: ShapeModule.angle
-      value: 7.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013075114060, guid: b66ac9272093d4742b777ab369b82453,
-        type: 2}
-      propertyPath: ShapeModule.randomDirection
-      value: 0
+      value: -1895364587
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b66ac9272093d4742b777ab369b82453, type: 2}
