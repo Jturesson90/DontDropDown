@@ -22,8 +22,8 @@ GameObject:
   - 33: {fileID: 33000013671215402}
   - 23: {fileID: 23000013146200860}
   - 114: {fileID: 114000013930908262}
-  - 64: {fileID: 64000013122614876}
   - 114: {fileID: 114000013552138310}
+  - 65: {fileID: 65000011089926154}
   m_Layer: 0
   m_Name: Water Plane
   m_TagString: Untagged
@@ -80,8 +80,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010361242630}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64000013122614876
-MeshCollider:
+--- !u!65 &65000011089926154
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -90,8 +90,8 @@ MeshCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 8, y: 0.2, z: 8}
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!114 &114000013552138310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,5 +118,5 @@ MonoBehaviour:
   waveFrequency: 0.12
   waveHeight: 0.05
   waveLength: 0.0001
-  edgeBlend: 1
+  edgeBlend: 0
   forceFlatShading: 1

@@ -47,13 +47,13 @@ public class ScoreController : MonoBehaviour
   }
 
 
-
+  WaitForSeconds delay = new WaitForSeconds(0.01f);
   IEnumerator Runner()
   {
     while (_running)
     {
       _scoreText.text = FormatTime(_stopwatch);
-      yield return new WaitForSeconds(0.01f);
+      yield return delay;
     }
     yield return null;
   }
@@ -76,7 +76,7 @@ public class ScoreController : MonoBehaviour
   string FormatTime(Stopwatch sw)
   {
     TimeSpan ts = sw.Elapsed;
-    string elapsedTime = String.Format("{0:0}:{1:00}.{2:00}", ts.Minutes, ts.Seconds,
+    string elapsedTime = string.Format("{0:0}:{1:00}.{2:00}", ts.Minutes, ts.Seconds,
        ts.Milliseconds / 10);
     return elapsedTime;
   }

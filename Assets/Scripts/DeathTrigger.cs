@@ -16,12 +16,12 @@ public class DeathTrigger : MonoBehaviour
       _triggered = false;
   }
 
+  private string playerTag = Player.PLAYER_TAG;
   void OnTriggerEnter(Collider other)
   {
-    if (other.tag.Equals("Player"))
+    if (other.gameObject.CompareTag(playerTag))
     {
       if (_triggered) return;
-      print("DeathTrigger: OnTriggerEnter");
       if (GameController.Instance.GameState == GameState.Playing)
       {
         GameController.Instance.Death();

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IRestartableCommand
   public float maxSpeed = 15;
   public float increasingSpeedDuration = 60f;
   public float moveSpeed = 5;
-
+  public readonly static string PLAYER_TAG = "Player";
   public Vector3 rotationSpeed = new Vector3(0, 5, 0);
 
   int speedTweenId = -1;
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour, IRestartableCommand
   }
   void Begin()
   {
-    print("Player: Begin()");
     speedTweenId = LeanTween.value(gameObject, minSpeed, maxSpeed, increasingSpeedDuration).setOnUpdate((float speed) =>
     {
       moveSpeed = speed;
@@ -43,7 +42,15 @@ public class Player : MonoBehaviour, IRestartableCommand
   // Update is called once per frame
   void Update()
   {
+#if UNITY_EDITOR
     MoveInput();
+#endif
+  }
+  private void FixedUpdate()
+  {
+#if !UNITY_EDITOR
+    TouchMoveInput(); 
+#endif
   }
   void OnDisable()
   {
@@ -55,6 +62,20 @@ public class Player : MonoBehaviour, IRestartableCommand
     _running = false;
     _playerController.Reset();
     LeanTween.cancel(speedTweenId);
+  }
+  private void TouchMoveInput()
+  {
+    if (!_running) return;
+    if (Input.touchCount > 0)
+    {
+      _playerController.Rotate(rotationSpeed);
+    }
+    else
+    {
+      _playerController.StopRotate();
+    }
+    _playerController.Move(moveSpeed);
+
   }
   private void MoveInput()
   {
