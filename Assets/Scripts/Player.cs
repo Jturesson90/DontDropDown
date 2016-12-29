@@ -45,9 +45,6 @@ public class Player : MonoBehaviour, IRestartableCommand
 #if UNITY_EDITOR
     MoveInput();
 #endif
-  }
-  private void FixedUpdate()
-  {
 #if !UNITY_EDITOR
     TouchMoveInput(); 
 #endif
