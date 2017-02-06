@@ -5,6 +5,7 @@ using System;
 
 public class Player : MonoBehaviour, IRestartableCommand
 {
+  private PlayerStartTransform _playerStartPos;
   public float minSpeed = 5;
   public float maxSpeed = 15;
   public float increasingSpeedDuration = 60f;
@@ -18,8 +19,9 @@ public class Player : MonoBehaviour, IRestartableCommand
   PlayerController _playerController;
   void Awake()
   {
+    _playerStartPos = new PlayerStartTransform(transform);
     _playerController = GetComponent<PlayerController>();
-    GameController.OnGameStateChanged += OnGameStateChanged;
+
   }
 
   private void OnGameStateChanged()
@@ -29,10 +31,20 @@ public class Player : MonoBehaviour, IRestartableCommand
       case GameState.Playing:
         Begin();
         break;
+      case GameState.GameOver:
+        GameOver();
+        break;
     }
   }
+
+  private void GameOver()
+  {
+    _playerController.enabled = false;
+  }
+
   void Begin()
   {
+    _playerController.enabled = true;
     speedTweenId = LeanTween.value(gameObject, minSpeed, maxSpeed, increasingSpeedDuration).setOnUpdate((float speed) =>
     {
       moveSpeed = speed;
@@ -49,6 +61,10 @@ public class Player : MonoBehaviour, IRestartableCommand
     TouchMoveInput(); 
 #endif
   }
+  private void OnEnable()
+  {
+    GameController.OnGameStateChanged += OnGameStateChanged;
+  }
   void OnDisable()
   {
     GameController.OnGameStateChanged -= OnGameStateChanged;
@@ -57,8 +73,9 @@ public class Player : MonoBehaviour, IRestartableCommand
   {
     print("Player: Restart()");
     _running = false;
-    _playerController.Reset();
+    _playerController.ResetController();
     LeanTween.cancel(speedTweenId);
+    _playerStartPos.UpdateTransform(transform);
   }
   private void TouchMoveInput()
   {
@@ -90,5 +107,26 @@ public class Player : MonoBehaviour, IRestartableCommand
   public void Execute()
   {
     OnRestart();
+  }
+  struct PlayerStartTransform
+  {
+    Vector3 _pos;
+    Vector3 _localScale;
+    Quaternion _rotation;
+
+    public PlayerStartTransform(Transform t)
+    {
+      _pos = t.localPosition;
+      _localScale = t.localScale;
+      _rotation = t.localRotation;
+    }
+
+    public void UpdateTransform(Transform t)
+    {
+      t.localPosition = _pos;
+      t.localScale = _localScale;
+      t.localRotation = _rotation;
+    }
+
   }
 }

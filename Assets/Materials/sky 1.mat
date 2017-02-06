@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: sky 1
-  m_Shader: {fileID: 4800000, guid: 10be3bdbf94d0f248ba41a922d53ed8b, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _SUNDISK_HIGH_QUALITY
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -114,7 +114,7 @@ Material:
     m_Floats:
     - first:
         name: _AtmosphereThickness
-      second: 3.26
+      second: 1.15
     - first:
         name: _BumpScale
       second: 1
@@ -129,7 +129,7 @@ Material:
       second: 0
     - first:
         name: _Exposure
-      second: 3.99
+      second: 1.54
     - first:
         name: _Glossiness
       second: 0.5
@@ -150,37 +150,40 @@ Material:
       second: 0
     - first:
         name: _SkyExponent1
-      second: 6.54
+      second: 85.33
     - first:
         name: _SkyExponent2
-      second: 2.38
+      second: 16.6
     - first:
         name: _SkyIntensity
-      second: 1.19
+      second: 0.85
     - first:
         name: _SkyTransparency
-      second: 1
+      second: 3.18
     - first:
         name: _SrcBlend
       second: 1
     - first:
         name: _SunAlpha
-      second: 50.81
+      second: 46.6
     - first:
         name: _SunAltitude
-      second: 51.2
+      second: 17.7
     - first:
         name: _SunAzimuth
-      second: 317.75
+      second: 176.7
     - first:
         name: _SunBeta
-      second: 202.47
+      second: 90.9
+    - first:
+        name: _SunDisk
+      second: 2
     - first:
         name: _SunIntensity
       second: 0
     - first:
         name: _SunSize
-      second: 0.262
+      second: 0.882
     - first:
         name: _UVSec
       second: 0
@@ -196,7 +199,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _GroundColor
-      second: {r: 0.19607845, g: 0.027450982, b: 0, a: 1}
+      second: {r: 0.19607845, g: 0.38235295, b: 0.5808824, a: 1}
     - first:
         name: _SkyColor1
       second: {r: 0.6104273, g: 0.9485294, b: 0.59980536, a: 0}
@@ -208,10 +211,10 @@ Material:
       second: {r: 0.40224913, g: 0.68344414, b: 0.9117647, a: 1}
     - first:
         name: _SkyTint
-      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      second: {r: 0.5, g: 0.08823532, b: 0.22794117, a: 1}
     - first:
         name: _SunColor
-      second: {r: 1, g: 0.99, b: 0.87, a: 1}
+      second: {r: 1, g: 1, b: 0, a: 1}
     - first:
         name: _SunVector
       second: {r: -0.86, g: -0.1, b: 0, a: 0.42}
