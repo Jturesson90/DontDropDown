@@ -3,8 +3,6 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-  public Player player;
-  public World world;
   private static GameManager _instance;
   public static GameManager Instance { get { return _instance; } }
 
