@@ -9,47 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000010399620214}
+  m_RootGameObject: {fileID: 1000010894649002}
   m_IsPrefabParent: 1
---- !u!1 &1000010399620214
+--- !u!1 &1000010894649002
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013508045772}
-  - 114: {fileID: 114000010380107598}
+  - component: {fileID: 4000014103814032}
+  - component: {fileID: 114000010036268478}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000013508045772
+--- !u!4 &4000014103814032
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010399620214}
+  m_GameObject: {fileID: 1000010894649002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.036, y: 0.14902258, z: -0.637}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010380107598
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114000010036268478
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010399620214}
+  m_GameObject: {fileID: 1000010894649002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b216780532a724ead79998b3f9b306, type: 3}
+  m_Script: {fileID: 11500000, guid: b67f2fc97d7820846b720f5f561ce987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 114000012932680546, guid: 0a83bcd67e6cbc24ab0da2ed207ef077, type: 2}
-  world: {fileID: 114000012385959462, guid: d890cf13ebd45fe4298337a9351c8de6, type: 2}

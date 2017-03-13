@@ -9,51 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000012378924122}
+  m_RootGameObject: {fileID: 1281290591872472}
   m_IsPrefabParent: 1
---- !u!1 &1000012378924122
+--- !u!1 &1281290591872472
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4000010914941692}
-  - component: {fileID: 114000010426547314}
+  - component: {fileID: 4689448586900622}
+  - component: {fileID: 114956556844126200}
   m_Layer: 0
-  m_Name: Loader
+  m_Name: LightningManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000010914941692
+--- !u!4 &4689448586900622
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012378924122}
+  m_GameObject: {fileID: 1281290591872472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.036, y: 0.14902258, z: -0.637}
+  m_LocalPosition: {x: 3.969749, y: -2.508095, z: 6.574405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114000010426547314
+--- !u!114 &114956556844126200
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012378924122}
+  m_GameObject: {fileID: 1281290591872472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b656dd2c46f6e4bbd89b6ff2da8a2a, type: 3}
+  m_Script: {fileID: 11500000, guid: caaa8882714fb2344a5e73e1817e5c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightningManagerPrefab: {fileID: 1281290591872472, guid: f0f4408d8417fe94c9cd677db805c535,
-    type: 2}
-  GameManagerPrefab: {fileID: 1000010399620214, guid: f8a06654dd2a8904aa5cca4e0732f09f,
-    type: 2}
-  UIManagerPrefab: {fileID: 1000010894649002, guid: 4c25d545d9a97c44988ee1f02b4f9895,
-    type: 2}

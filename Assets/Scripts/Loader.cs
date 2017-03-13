@@ -3,26 +3,38 @@ using System.Collections;
 
 public class Loader : MonoBehaviour
 {
+    public GameObject LightningManagerPrefab;
+    public GameObject GameManagerPrefab;
+    //public GameObject inputManager;
+    public GameObject UIManagerPrefab;
 
-  public GameObject gameManager;
-  //public GameObject inputManager;
-  public GameObject uiManager;
-
-  void Awake()
-  {
-    if (!GameManager.Instance)
+    void Awake()
     {
-      Instantiate(gameManager);
-    }
-    //if (!InputManager.Instance)
-    //{
-    //  Instantiate(inputManager);
-    //}
-    if (!UIManager.Instance)
-    {
-      Instantiate(uiManager);
-    }
+        if (!GameManager.Instance)
+        {
+            Instantiate(GameManagerPrefab, transform);
+        }
+        else
+        {
+            GameManager.Instance.gameObject.transform.parent = transform;
+        }
+        if (!LightningManager.Instance)
+        {
+            Instantiate(LightningManagerPrefab, transform);
+        }
+        else
+        {
+            LightningManager.Instance.gameObject.transform.parent = transform;
+        }
+        if (!UIManager.Instance)
+        {
+            Instantiate(UIManagerPrefab, transform);
+        }
+        else
+        {
+            UIManager.Instance.gameObject.transform.parent = transform;
+        }
 
-    Destroy(gameObject);
-  }
+
+    }
 }

@@ -26,7 +26,6 @@ public class Restart : MonoBehaviour
   }
   private void OnRestart()
   {
-    print("Restart: OnRestart");
     AtStart();
   }
   public void AtStart()
@@ -40,7 +39,6 @@ public class Restart : MonoBehaviour
 
   private void OnFinished()
   {
-    print("Restart: OnFinished");
     GameController.Instance.RestartDone();
   }
 
