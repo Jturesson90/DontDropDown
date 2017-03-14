@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.817, g: 0.2205882, b: 0.5, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -36,8 +36,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 308904835}
-  m_IndirectSpecularColor: {r: 0.4415519, g: 0.49041706, b: 0.57042956, a: 1}
+  m_Sun: {fileID: 2092036119}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427147, b: 0.56452364, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 0.25, a: 0.928}
   m_Intensity: 1
   m_Range: 69.52
-  m_SpotAngle: 95.7
+  m_SpotAngle: 49
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3837,14 +3837,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 555609612}
-  m_LocalRotation: {x: 0, y: 0, z: 0.22299473, w: 0.97481966}
+  m_LocalRotation: {x: 0, y: -0, z: 0.42577925, w: -0.9048271}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 308904832}
   m_Father: {fileID: 761677874}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -694.23}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -410.4}
 --- !u!1 &626973241
 GameObject:
   m_ObjectHideFlags: 0
@@ -5394,7 +5394,7 @@ Light:
   serializedVersion: 7
   m_Type: 3
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -9109,6 +9109,11 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 23481570355330484, guid: d890cf13ebd45fe4298337a9351c8de6,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 840610cdd2d56574d84aafcb404f51fd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d890cf13ebd45fe4298337a9351c8de6, type: 2}
   m_IsPrefabParent: 0
@@ -9388,7 +9393,7 @@ Light:
   serializedVersion: 7
   m_Type: 3
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
