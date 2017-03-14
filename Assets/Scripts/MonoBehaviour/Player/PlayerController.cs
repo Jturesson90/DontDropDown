@@ -13,7 +13,6 @@ public class PlayerController : BaseController
 #else
         input = Input.GetAxis("Fire1");
 #endif
-        print(input);
         return input;
 
     }

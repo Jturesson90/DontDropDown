@@ -11,7 +11,10 @@ public class Player : MonoBehaviour, IRestartableCommand
     bool _running = false;
 
     BaseController _controller;
-
+    private void Start()
+    {
+        print("BEAR START");
+    }
     void Awake()
     {
         _playerStartPos = new PlayerStartTransform(transform);

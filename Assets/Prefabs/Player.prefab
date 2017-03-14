@@ -1550,10 +1550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c4c7bbf0cefb4bb20f426ca4cfc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 1.2
-  maxSpeed: 8
-  increasingSpeedDuration: 5
+  MinSpeed: 1.2
+  MaxSpeed: 8
+  IncreasingSpeedDuration: 60
   _moveSpeed: 1
+  Angle: {x: 0, y: -47, z: 0}
 --- !u!135 &135830605550191844
 SphereCollider:
   m_ObjectHideFlags: 1

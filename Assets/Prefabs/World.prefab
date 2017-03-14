@@ -173,7 +173,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4095881611299122}
-  - component: {fileID: 95135682000498506}
   - component: {fileID: 114670532098297898}
   m_Layer: 0
   m_Name: islandCone
@@ -211,21 +210,6 @@ GameObject:
   - component: {fileID: 23089010486478456}
   m_Layer: 0
   m_Name: Tree_001
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1799014405733062
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4593014111932798}
-  m_Layer: 0
-  m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,7 +255,6 @@ Transform:
   m_LocalPosition: {x: 3.75, y: -2.25, z: 6.63}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
-  - {fileID: 4593014111932798}
   - {fileID: 4909476182343854}
   - {fileID: 4470324263462548}
   - {fileID: 4350773682375614}
@@ -303,7 +286,7 @@ Transform:
   m_LocalScale: {x: 0.07767307, y: 0.07767307, z: 0.07767307}
   m_Children: []
   m_Father: {fileID: 4095881611299122}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4314478584787870
 Transform:
@@ -329,7 +312,7 @@ Transform:
   m_LocalScale: {x: 0.07767307, y: 0.07767307, z: 0.07767307}
   m_Children: []
   m_Father: {fileID: 4095881611299122}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4359636400893638
 Transform:
@@ -358,20 +341,7 @@ Transform:
   m_LocalScale: {x: 0.07767307, y: 0.07767307, z: 0.07767307}
   m_Children: []
   m_Father: {fileID: 4095881611299122}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4593014111932798
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1799014405733062}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4095881611299122}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4604837005106974
 Transform:
@@ -410,7 +380,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4095881611299122}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23066699596306666
 MeshRenderer:
@@ -421,9 +391,9 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_MotionVectors: 1
+  m_MotionVectors: 2
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 2100000, guid: 86da3a12e2ced0142b2bdba4bffd314c, type: 2}
   - {fileID: 2100000, guid: 248171bcbc702e945b802ab16e194dc7, type: 2}
@@ -452,7 +422,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1736360471031282}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -578,7 +548,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1063046314045514}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -610,7 +580,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1208043311307054}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -721,23 +691,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.2, z: 1.5}
   m_Center: {x: 0, y: -0.06, z: 0}
---- !u!95 &95135682000498506
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1538842241801126}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: cac593c47c52ad54a96902317ea36461, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000011973893996
 MonoBehaviour:
   m_ObjectHideFlags: 1
