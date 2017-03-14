@@ -84,13 +84,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4967477726887744}
   - component: {fileID: 95123897111576436}
+  - component: {fileID: 114027070041201848}
   m_Layer: 0
-  m_Name: Doe_01
+  m_Name: Doe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1100284549619602
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,8 +101,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4870728191683320}
   - component: {fileID: 95094650570816864}
+  - component: {fileID: 114256518449949892}
   m_Layer: 0
-  m_Name: Moose_Male_01
+  m_Name: Moose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,8 +150,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4934790024220018}
   - component: {fileID: 95069824047024576}
+  - component: {fileID: 114358106556953708}
   m_Layer: 0
-  m_Name: Bear_03
+  m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,8 +311,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4081994184908840}
   - component: {fileID: 95668087752300908}
+  - component: {fileID: 114544365442919262}
   m_Layer: 0
-  m_Name: Wolf_03
+  m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,6 +443,7 @@ GameObject:
   - component: {fileID: 54358208858412086}
   - component: {fileID: 114931180439767156}
   - component: {fileID: 114547213016676404}
+  - component: {fileID: 114905124637600350}
   m_Layer: 0
   m_Name: Player_ForestAnimal
   m_TagString: Player
@@ -519,8 +524,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4189440191138046}
   - component: {fileID: 95858015247043414}
+  - component: {fileID: 114001176597409246}
   m_Layer: 0
-  m_Name: Boar_02
+  m_Name: Boar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,6 +1139,61 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114001176597409246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895363845635914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a01802622563847bb6326bddd994c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114027070041201848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1075516599328634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a01802622563847bb6326bddd994c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114256518449949892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100284549619602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a01802622563847bb6326bddd994c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114358106556953708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128255460082890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a01802622563847bb6326bddd994c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114544365442919262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490178885041338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a01802622563847bb6326bddd994c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114547213016676404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1144,6 +1205,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab89552711561e349919d2d622af58da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114905124637600350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795648583966118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8a2c7b28597ca42942ad885f832e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentAnimal: {fileID: 0}
 --- !u!114 &114931180439767156
 MonoBehaviour:
   m_ObjectHideFlags: 1

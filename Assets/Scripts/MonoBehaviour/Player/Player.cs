@@ -11,14 +11,16 @@ public class Player : MonoBehaviour, IRestartableCommand
     bool _running = false;
 
     BaseController _controller;
+    AnimalChooser _animalChooser;
     private void Start()
     {
-        print("BEAR START");
+        _animalChooser.ChooseRandomAnimal();
     }
     void Awake()
     {
+        _animalChooser = GetComponent<AnimalChooser>();
         _playerStartPos = new PlayerStartTransform(transform);
-        _controller = GetComponent<BaseController>();        
+        _controller = GetComponent<BaseController>();
     }
 
     private void OnGameStateChanged()
@@ -37,11 +39,20 @@ public class Player : MonoBehaviour, IRestartableCommand
     {
         _controller.Stop();
     }
-
     void Begin()
     {
         _controller.Begin();
+        _animalChooser.CurrentAnimal.SetAnimatorSpeed(_animalChooser.CurrentAnimal.StartAnimationSpeed);
         _running = true;
+        InvokeRepeating("UpdateAnimationSpeed", 0, 0.2f);
+    }
+
+    void UpdateAnimationSpeed()
+    {
+        if (_controller.MoveSpeed > 2.5f)
+        {
+            _animalChooser.CurrentAnimal.SetAnimatorSpeed(1);
+        }
     }
     private void OnEnable()
     {
@@ -56,6 +67,8 @@ public class Player : MonoBehaviour, IRestartableCommand
         _running = false;
         _controller.ResetController();
         _playerStartPos.UpdateTransform(transform);
+        _animalChooser.ChooseRandomAnimal();
+        CancelInvoke("UpdateAnimationSpeed");
     }
     public void Execute()
     {

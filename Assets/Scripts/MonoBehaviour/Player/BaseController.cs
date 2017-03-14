@@ -8,7 +8,7 @@ public abstract class BaseController : MonoBehaviour
     public float MinSpeed = 1.2f;
     public float MaxSpeed = 8f;
     public float IncreasingSpeedDuration = 60f;
-    public float _moveSpeed = 1f;
+    public float MoveSpeed = 1f;
     public Vector3 Angle = new Vector3(0, -47, 0);
 
     Vector3 _velocity;
@@ -31,7 +31,7 @@ public abstract class BaseController : MonoBehaviour
     {
         speedTweenId = LeanTween.value(gameObject, MinSpeed, MaxSpeed, IncreasingSpeedDuration).setOnUpdate((float speed) =>
         {
-            _moveSpeed = speed;
+            MoveSpeed = speed;
         }).id;
         _running = true;
     }
@@ -49,10 +49,10 @@ public abstract class BaseController : MonoBehaviour
     {
         if (!_running) return;
         //Move
-        _rigidbody.MovePosition(transform.position + _rigidbody.transform.forward * _moveSpeed * Time.deltaTime);
+        _rigidbody.MovePosition(transform.position + _rigidbody.transform.forward * MoveSpeed * Time.deltaTime);
 
         //Rotate
-        var _deltaRotation = Quaternion.Euler(Angle * _moveSpeed * _input * Time.deltaTime);
+        var _deltaRotation = Quaternion.Euler(Angle * MoveSpeed * _input * Time.deltaTime);
         _rigidbody.MoveRotation(_rigidbody.rotation * _deltaRotation);
 
     }
