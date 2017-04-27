@@ -17,7 +17,6 @@ public class ScoreController : MonoBehaviour
   bool _running = false;
   void Awake()
   {
-
     _scoreText = GetComponent<Text>();
     _stopwatch = new Stopwatch();
     Reset();
@@ -67,8 +66,6 @@ public class ScoreController : MonoBehaviour
     _running = false;
     _stopwatch.Stop();
     StopCoroutine(Runner());
-    //StopAllCoroutines();
-    //  CancelInvoke("SetUIScore");
     SetUIScore();
   }
   public void Reset()

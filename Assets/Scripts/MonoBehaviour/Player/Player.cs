@@ -29,6 +29,12 @@ public class Player : MonoBehaviour, IRestartableCommand
     {
         _animalChooser.ChooseRandomAnimal();
     }
+
+    internal void HitByObject(MonoBehaviour monoBehaviour)
+    {
+        throw new NotImplementedException();
+    }
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -39,11 +45,6 @@ public class Player : MonoBehaviour, IRestartableCommand
         if (startPos) _playerStartPos = new PlayerStartTransform(startPos.transform);
         else _playerStartPos = new PlayerStartTransform(transform);
         _playerStartPos.UpdateTransform(transform);
-    }
-
-    private void FixedUpdate()
-    {
-
     }
     internal void Move(Vector3 move, bool rotate)
     {

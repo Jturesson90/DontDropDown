@@ -14,7 +14,7 @@ namespace EasyButtons
     {
         public override void OnInspectorGUI()
         {
-
+            DrawDefaultInspector();
             // Loop through all methods with no parameters
             foreach (var method in target.GetType().GetMethods()
                 .Where(m => m.GetParameters().Length == 0))
@@ -42,7 +42,7 @@ namespace EasyButtons
             }
 
             // Draw the rest of the inspector as usual
-            DrawDefaultInspector();
+           
         }
     }
 }

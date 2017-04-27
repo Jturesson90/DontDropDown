@@ -6,7 +6,7 @@ public class StartGameTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameController.Instance.GameState = GameState.Playing;
+        GameController.Instance.StartGame();
 
     }
 

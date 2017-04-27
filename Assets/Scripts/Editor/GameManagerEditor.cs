@@ -13,15 +13,15 @@ public class GameManagerEditor : Editor
         GUILayout.BeginHorizontal("");
         if (GUILayout.Button("Start"))
         {
-            GameController.Instance.GameState = GameState.Playing;
+            GameController.Instance.StartGame();
         }
         if (GUILayout.Button("Stop"))
         {
-            GameController.Instance.GameState = GameState.GameOver;
+           // GameController.Instance. = GameState.GameOver;
         }
         if (GUILayout.Button("Reset"))
         {
-            GameController.Instance.GameState = GameState.Restarting;
+          //  GameController.Instance.GameState = GameState.Restarting;
         }
         GUILayout.EndHorizontal();
     }

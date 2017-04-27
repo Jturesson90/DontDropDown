@@ -6,39 +6,47 @@ using UnityEngine.UI;
 public class ScoreHandler : MonoBehaviour
 {
 
-  ScoreController _controller;
-  public BestScoreText bestScoreText;
-  void Start()
-  {
-    print("ScoreHandler Awake");
-    _controller = GetComponent<ScoreController>();
-    GameController.OnGameStateChanged += OnGameStateChanged;
-  }
-
-  private void OnGameStateChanged()
-  {
-    var state = GameController.Instance.GameState;
-    switch (state)
+    ScoreController _controller;
+    public BestScoreText bestScoreText;
+    void Start()
     {
-      case GameState.InMenu:
-        _controller.Reset();
-        break;
-      case GameState.Playing:
-        if (_controller.IsRunning) break;
-        _controller.StartCounting();
-        break;
-      case GameState.GameOver:
-        _controller.Stop();
+        print("ScoreHandler Start");
+        _controller = GetComponent<ScoreController>();
 
-        PlayerPrefsManager.SetHighscore(_controller.GetScore());
-        long score1 = _controller.GetScore();
-        long score2 = PlayerPrefsManager.GetHighscore();
-
-        long bestScore = score1 > score2 ? score1 : score2;
-        bestScoreText.SetScore(bestScore);
-
-        GameController.Instance.SubmitScore(_controller.GetScore());
-        break;
     }
-  }
+    private void OnEnable()
+    {
+        GameController.OnGameStateChanged += OnGameStateChanged;
+    }
+    private void OnDisable()
+    {
+        GameController.OnGameStateChanged -= OnGameStateChanged;
+    }
+    private void OnGameStateChanged()
+    {
+        var state = GameController.Instance.GameState;
+        switch (state)
+        {
+            case GameState.InMenu:
+                _controller.Reset();
+                break;
+            case GameState.Playing:
+
+                if (_controller.IsRunning) break;
+                _controller.StartCounting();
+                break;
+            case GameState.GameOver:
+                _controller.Stop();
+
+                PlayerPrefsManager.SetHighscore(_controller.GetScore());
+                long score1 = _controller.GetScore();
+                long score2 = PlayerPrefsManager.GetHighscore();
+
+                long bestScore = score1 > score2 ? score1 : score2;
+                bestScoreText.SetScore(bestScore);
+
+                GameController.Instance.SubmitScore(_controller.GetScore());
+                break;
+        }
+    }
 }

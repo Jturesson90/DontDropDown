@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class PlayButtonHandler : ButtonHandler
 {
-	public override void OnClick()
-	{
-		UIManager.Instance.OnClick(this);
-		GetComponent<Button>().interactable = false;
-		GetComponent<Animator>().SetTrigger("Pressed");
-    print("PlayButtonHandler::OnClick()");
-	}
+    public override void OnClick()
+    {
+        UIManager.Instance.OnClick(this);
+        GetComponent<Button>().interactable = false;
+        GetComponent<Animator>().SetTrigger("Pressed");
+    }
 
-	public void Reset()
-	{
-		GetComponent<Button>().interactable = true;
-		GetComponent<Animator>().SetTrigger("Normal");
-    print("PlayButtonHandler::Reset()");
-  }
+    public void Reset()
+    {
+        GetComponent<Button>().interactable = true;
+        GetComponent<Animator>().SetTrigger("Normal");
+    }
 }
