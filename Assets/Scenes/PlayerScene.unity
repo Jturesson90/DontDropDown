@@ -286,6 +286,11 @@ Transform:
   m_Father: {fileID: 1129106898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 4.24, y: 90, z: 0}
+--- !u!4 &448960542 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4479068026845224, guid: 4cab7cf4e8d317d4282389aa549bc079,
+    type: 2}
+  m_PrefabInternal: {fileID: 831333966}
 --- !u!1001 &570016125
 Prefab:
   m_ObjectHideFlags: 0
@@ -360,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9c9fb0b6b3e974cbf61fa38ff484cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
+  _playerTransform: {fileID: 448960542}
 --- !u!4 &783399942
 Transform:
   m_ObjectHideFlags: 0

@@ -60,10 +60,12 @@ public class Player : MonoBehaviour, IRestartableCommand
         var deltaRotation = Quaternion.Euler(Angle * MoveSpeed * input * Time.deltaTime) * _rigidbody.rotation;
         _rigidbody.MoveRotation(deltaRotation);
 
-        var xRot = GetRayCastRotation();
-        _rigidbody.MoveRotation(xRot);
+        var targetRotation = GetTargetRotationQuaternion().eulerAngles;
+        var lerpedRotation = Mathf.LerpAngle(_animalChooser.CurrentAnimal.transform.localEulerAngles.x, targetRotation.x, Time.deltaTime * 10f);
+        float y = _animalChooser.CurrentAnimal.transform.localEulerAngles.y;
+        float z = _animalChooser.CurrentAnimal.transform.localEulerAngles.z;
+        _animalChooser.CurrentAnimal.transform.localEulerAngles = new Vector3(lerpedRotation, y, z);
 
-        //_rigidbody.MoveRotation(Quaternion.Lerp(_rigidbody.transform.rotation, xRot, Time.deltaTime * 10f));
     }
 
 
@@ -115,7 +117,19 @@ public class Player : MonoBehaviour, IRestartableCommand
     }
     readonly Vector3 VECTOR3_DOWN = Vector3.down;
     readonly Vector3 VECTOR3_UP = Vector3.up;
-    Quaternion GetRayCastRotation()
+    Quaternion GetTargetRotationQuaternion()
+    {
+        Ray ray = GetRay(_collider.transform.position + (transform.forward * _collider.radius), VECTOR3_DOWN);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10f, 1 << LayerMask.NameToLayer("Island")))
+        {
+            var targetRotation = Quaternion.FromToRotation(_rigidbody.transform.up, hit.normal) * _rigidbody.rotation;
+            return targetRotation;
+        }
+        return _rigidbody.rotation;
+    }
+    Vector3 GetTargetRotation()
     {
         Ray ray = GetRay(_collider.transform.position + (transform.forward * _collider.radius), VECTOR3_DOWN);
 
@@ -123,10 +137,10 @@ public class Player : MonoBehaviour, IRestartableCommand
         if (Physics.Raycast(ray, out hit, 10f, 1 << LayerMask.NameToLayer("Island")))
         {
             var modelTransform = _animalChooser.CurrentAnimal.transform;
-            var targetRotation = Quaternion.FromToRotation(_rigidbody.transform.up, hit.normal) * _rigidbody.rotation;
+            var targetRotation = hit.normal;
             return targetRotation;
         }
-        return _rigidbody.rotation;
+        return _rigidbody.transform.localEulerAngles;
     }
 
     private Ray GetRay(Vector3 startPos, Vector3 dir)
