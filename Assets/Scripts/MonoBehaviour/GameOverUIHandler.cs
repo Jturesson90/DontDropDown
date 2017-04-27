@@ -1,35 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class GameOverUIHandler : UIHandler
 {
-  bool _pressed = false;
-  protected override void OnGameStateChanged()
-  {
-    var gameState = GameController.Instance.GameState;
-    print("GameOverUIHandler OnGameStateChanged " + gameState);
-    if (gameState == GameState.GameOver)
+    bool _pressed = false;
+    public float waitTime = 1f;
+    public List<GameObject> gameObjectsToActivateWithDelay;
+    public List<GameObject> gameObjectsToActivateWithoutDelay;
+    public List<GameObject> gameObjectsToDeactivate;
+    protected override void OnGameStateChanged()
     {
-      _pressed = false;
-      foreach (Transform child in transform)
-      {
-        child.gameObject.SetActive(true);
-      }
+        var gameState = GameController.Instance.GameState;
+        if (gameState == GameState.GameOver)
+        {
+            _pressed = false;
+
+            SetGameObjectsActiveDelay(gameObjectsToActivateWithDelay, true, waitTime);
+            foreach (var child in gameObjectsToActivateWithoutDelay)
+            {
+                child.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var child in gameObjectsToDeactivate)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
     }
-    else
+    public void OnRestartPanelClicked()
     {
-      foreach (Transform child in transform)
-      {
-        child.gameObject.SetActive(false);
-      }
+        if (_pressed) return;
+        bool isRestartReady = gameObjectsToActivateWithDelay.TrueForAll(b => b.activeInHierarchy);
+        if (!isRestartReady) return;
+        _pressed = true;
+        GameController.Instance.Restart();
     }
-  }
-  public void OnRestartPanelClicked()
-  {
-    print("GameOverUIHandler:OnRestartPanelClicked() ");
-    if (_pressed) return;
-    _pressed = true;
-    GameController.Instance.Restart();
-  }
 }

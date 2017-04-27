@@ -2,67 +2,36 @@
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Player))]
 public abstract class BaseController : MonoBehaviour
 {
-    public float MinSpeed = 1.2f;
-    public float MaxSpeed = 8f;
-    public float IncreasingSpeedDuration = 60f;
-    public float MoveSpeed = 1f;
-    public Vector3 Angle = new Vector3(0, -47, 0);
-
-    Vector3 _velocity;
-    Vector3 _eulerAngleVelocity = Vector3.one;
+    Vector3 _move;
     float _speed;
     bool _rotate = false;
-    Rigidbody _rigidbody;
+    Player _player;
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
     protected abstract float GetInput();
-    private float _input;
-
-    int speedTweenId = -1;
-
-    bool _running = false;
-
-    void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-    public void Begin()
-    {
-        speedTweenId = LeanTween.value(gameObject, MinSpeed, MaxSpeed, IncreasingSpeedDuration).setOnUpdate((float speed) =>
-        {
-            MoveSpeed = speed;
-        }).id;
-        _running = true;
-    }
-
-    public void Stop()
-    {
-        LeanTween.cancel(speedTweenId);
-    }
-    private void Update()
-    {
-        if (!_running) return;
-        _input = GetInput();
-    }
+    readonly Vector3 _forward = Vector3.forward;
     void FixedUpdate()
     {
-        if (!_running) return;
+        var input = GetInput();
+
         //Move
-        _rigidbody.MovePosition(transform.position + _rigidbody.transform.forward * MoveSpeed * Time.deltaTime);
+        var rotate = input > float.Epsilon ? true : false;
+        _player.Move(transform.forward, rotate);
 
-        //Rotate
-        var _deltaRotation = Quaternion.Euler(Angle * MoveSpeed * _input * Time.deltaTime);
-        _rigidbody.MoveRotation(_rigidbody.rotation * _deltaRotation);
+        //Move
+        //_move = _rigidbody.transform.forward * input;
+        //var deltaSpeed = _rigidbody.transform.forward * MoveSpeed * Time.deltaTime;
+        //var newPosition = transform.position + deltaSpeed;
 
-    }
-    public void ResetController()
-    {
-        _running = false;
-        _eulerAngleVelocity = Vector3.zero;
-        _velocity = Vector3.zero;
-        _rigidbody.velocity = new Vector3(0f, 0f, 0f);
-        _rigidbody.angularVelocity = new Vector3(0f, 0f, 0f);
+        //_rigidbody.MovePosition(newPosition);
+        ////Rotate
+        //var deltaRotation = Quaternion.Euler(Angle * MoveSpeed * input * Time.deltaTime);
+        //_rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
 
     }
 }

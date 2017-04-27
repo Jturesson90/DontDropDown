@@ -163,7 +163,7 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 3
+    Android: 1
     BlackBerry: 1
     Standalone: 5
     WP8: 1

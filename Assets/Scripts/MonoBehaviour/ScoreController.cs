@@ -17,24 +17,28 @@ public class ScoreController : MonoBehaviour
   bool _running = false;
   void Awake()
   {
-#if UNITY_EDITOR
-    UnityEditor.EditorApplication.playmodeStateChanged = HandleOnPlayModeChanged;
-#endif
+
     _scoreText = GetComponent<Text>();
     _stopwatch = new Stopwatch();
     Reset();
   }
-  public void Start()
+  private void OnEnable()
   {
-    print("ScoreController: Start()");
-
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.playmodeStateChanged += HandleOnPlayModeChanged;
+#endif
+  }
+  private void OnDisable()
+  {
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.playmodeStateChanged -= HandleOnPlayModeChanged;
+#endif
+  }
+  public void StartCounting()
+  {
     _running = true;
     _stopwatch.Start();
     StartCoroutine(Runner());
-  }
-  void SubmitScore()
-  {
-
   }
   void SetUIScore()
   {
@@ -62,7 +66,8 @@ public class ScoreController : MonoBehaviour
     print("ScoreController Stop");
     _running = false;
     _stopwatch.Stop();
-    StopAllCoroutines();
+    StopCoroutine(Runner());
+    //StopAllCoroutines();
     //  CancelInvoke("SetUIScore");
     SetUIScore();
   }
@@ -93,7 +98,7 @@ public class ScoreController : MonoBehaviour
     if (pauseStatus)
       Stop();
     else
-      Start();
+      StartCounting();
   }
 #if UNITY_EDITOR
   void HandleOnPlayModeChanged()

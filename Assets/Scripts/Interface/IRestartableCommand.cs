@@ -1,4 +1,4 @@
 ﻿public interface IRestartableCommand
 {
-  void Execute();
+  void ExecuteRestart();
 }

@@ -54,7 +54,7 @@ public class Restart : MonoBehaviour
       IRestartableCommand restartable = item.GetComponent<IRestartableCommand>();
       if (restartable != null && restartable is IRestartableCommand)
       {
-        restartable.Execute();
+        restartable.ExecuteRestart();
       }
 
     }

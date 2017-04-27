@@ -6,8 +6,7 @@ public class AnimalChooser : MonoBehaviour
 {
     [HideInInspector]
     public Animal CurrentAnimal = null;
-
-    public List<Animal> _animals;
+    private List<Animal> _animals;
 
 
     void Awake()
@@ -18,16 +17,29 @@ public class AnimalChooser : MonoBehaviour
 
     private void FillAnimalsList()
     {
+        var palyer = GetComponent<Player>();
         foreach (Transform child in transform)
         {
             var animalComponent = child.GetComponent<Animal>();
+
             if (animalComponent != null)
             {
                 _animals.Add(animalComponent);
+
+                animalComponent.Player = palyer;
             }
         }
     }
+    public void ChooseAnimal(Animal animal)
+    {
+        foreach (Animal animalGO in _animals)
+        {
+            animalGO.gameObject.SetActive(false);
+        }
+        CurrentAnimal = animal;
+        animal.gameObject.SetActive(true);
 
+    }
     public void ChooseAnimal(int index)
     {
         foreach (Animal animal in _animals)

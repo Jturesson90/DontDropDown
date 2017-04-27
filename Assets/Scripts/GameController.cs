@@ -39,7 +39,6 @@ public class GameController
       {
         _gameState = value;
 
-        Debug.Log("GameController calling OnGameStateChanged");
         if (OnGameStateChanged != null) OnGameStateChanged();
       }
     }
@@ -85,7 +84,7 @@ public class GameController
       GameState = GameState.InMenu;
     }
   }
-  void OnPlayClicked()
+  public void OnPlayClicked()
   {
     Debug.Log("GameController: OnPlayClicked()");
     if (GameState == GameState.InMenu)

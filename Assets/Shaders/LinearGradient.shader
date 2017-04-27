@@ -1,4 +1,6 @@
-﻿Shader "ShtoporGames/Unlit/LinearGradient"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "ShtoporGames/Unlit/LinearGradient"
 {
 	Properties {
         _TopColor ("Top color", Color) = (1,1,1,1)
@@ -25,7 +27,7 @@
 			v2f vert (appdata_full v)
 			{
 				v2f o;
-				o.position = mul (UNITY_MATRIX_MVP, v.vertex);
+				o.position = UnityObjectToClipPos (v.vertex);
 				o.color = lerp(_BottomColor, _TopColor, v.texcoord.y );
 				return o;
 			}

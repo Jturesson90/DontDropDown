@@ -9,18 +9,23 @@ ModelImporter:
     100002: Cube
     100004: Empty
     100006: Island
+    100008: Bump
     400000: //RootNode
     400002: Cube
     400004: Empty
     400006: Island
+    400008: Bump
     2300000: //RootNode
     2300002: Cube
     2300004: Island
+    2300006: Bump
     3300000: //RootNode
     3300002: Cube
     3300004: Island
+    3300006: Bump
     4300000: Cube
     4300002: Island
+    4300004: Bump
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -33,6 +38,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 

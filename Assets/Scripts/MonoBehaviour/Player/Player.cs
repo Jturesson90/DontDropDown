@@ -2,26 +2,70 @@
 using System.Collections;
 using System;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(SphereCollider))]
 public class Player : MonoBehaviour, IRestartableCommand
 {
     private PlayerStartTransform _playerStartPos;
     public readonly static string PLAYER_TAG = "Player";
 
+    [SerializeField]
+    float MinSpeed = 1.2f;
+    [SerializeField]
+    float MaxSpeed = 8f;
+    [SerializeField]
+    float IncreasingSpeedDuration = 60f;
+    float MoveSpeed = 1f;
+    [SerializeField]
+    Vector3 Angle = new Vector3(0, -47, 0);
+
     int speedTweenId = -1;
     bool _running = false;
 
-    BaseController _controller;
     AnimalChooser _animalChooser;
+    Rigidbody _rigidbody;
+    SphereCollider _collider;
     private void Start()
     {
         _animalChooser.ChooseRandomAnimal();
     }
     void Awake()
     {
+        _rigidbody = GetComponent<Rigidbody>();
         _animalChooser = GetComponent<AnimalChooser>();
-        _playerStartPos = new PlayerStartTransform(transform);
-        _controller = GetComponent<BaseController>();
+        _collider = GetComponent<SphereCollider>();
+
+        var startPos = GameObject.Find("Player Start");
+        if (startPos) _playerStartPos = new PlayerStartTransform(startPos.transform);
+        else _playerStartPos = new PlayerStartTransform(transform);
+        _playerStartPos.UpdateTransform(transform);
     }
+
+    private void FixedUpdate()
+    {
+
+    }
+    internal void Move(Vector3 move, bool rotate)
+    {
+        if (!_running) return;
+
+        var newVelocity = move * MoveSpeed;
+        _animalChooser.CurrentAnimal.SetAnimatorSpeed(newVelocity.magnitude);
+        newVelocity.y = _rigidbody.velocity.y;
+        _rigidbody.velocity = newVelocity;
+
+
+        var input = rotate ? 1 : 0;
+
+        var deltaRotation = Quaternion.Euler(Angle * MoveSpeed * input * Time.deltaTime) * _rigidbody.rotation;
+        _rigidbody.MoveRotation(deltaRotation);
+
+        var xRot = GetRayCastRotation();
+        _rigidbody.MoveRotation(xRot);
+
+        //_rigidbody.MoveRotation(Quaternion.Lerp(_rigidbody.transform.rotation, xRot, Time.deltaTime * 10f));
+    }
+
 
     private void OnGameStateChanged()
     {
@@ -35,24 +79,19 @@ public class Player : MonoBehaviour, IRestartableCommand
                 break;
         }
     }
-    private void GameOver()
-    {
-        _controller.Stop();
-    }
+
     void Begin()
     {
-        _controller.Begin();
-        _animalChooser.CurrentAnimal.SetAnimatorSpeed(_animalChooser.CurrentAnimal.StartAnimationSpeed);
-        _running = true;
-        InvokeRepeating("UpdateAnimationSpeed", 0, 0.2f);
-    }
-
-    void UpdateAnimationSpeed()
-    {
-        if (_controller.MoveSpeed > 2.5f)
+        _running = true; speedTweenId = LeanTween.value(gameObject, MinSpeed, MaxSpeed, IncreasingSpeedDuration).setOnUpdate((float speed) =>
         {
-            _animalChooser.CurrentAnimal.SetAnimatorSpeed(1);
-        }
+            MoveSpeed = speed;
+        }).id;
+    }
+    private void GameOver()
+    {
+        _running = false;
+        _rigidbody.velocity = _rigidbody.velocity * 0.5f;
+        LeanTween.cancel(speedTweenId);
     }
     private void OnEnable()
     {
@@ -65,15 +104,38 @@ public class Player : MonoBehaviour, IRestartableCommand
     void OnRestart()
     {
         _running = false;
-        _controller.ResetController();
         _playerStartPos.UpdateTransform(transform);
         _animalChooser.ChooseRandomAnimal();
-        CancelInvoke("UpdateAnimationSpeed");
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
     }
-    public void Execute()
+    public void ExecuteRestart()
     {
         OnRestart();
     }
+    readonly Vector3 VECTOR3_DOWN = Vector3.down;
+    readonly Vector3 VECTOR3_UP = Vector3.up;
+    Quaternion GetRayCastRotation()
+    {
+        Ray ray = GetRay(_collider.transform.position + (transform.forward * _collider.radius), VECTOR3_DOWN);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10f, 1 << LayerMask.NameToLayer("Island")))
+        {
+            var modelTransform = _animalChooser.CurrentAnimal.transform;
+            var targetRotation = Quaternion.FromToRotation(_rigidbody.transform.up, hit.normal) * _rigidbody.rotation;
+            return targetRotation;
+        }
+        return _rigidbody.rotation;
+    }
+
+    private Ray GetRay(Vector3 startPos, Vector3 dir)
+    {
+        var ray = new Ray(startPos, dir);
+        Debug.DrawRay(startPos, dir, Color.red);
+        return ray;
+    }
+
     struct PlayerStartTransform
     {
         Vector3 _pos;

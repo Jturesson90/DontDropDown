@@ -4,9 +4,9 @@ using System.Collections;
 public class FloatingGameObject : MonoBehaviour
 {
 
-  public float floatHeight = 3f;
-  public float loopDuration = 4f;
-  public LeanTweenType tweenType;
+  public float floatHeight = -0.5f;
+  public float loopDuration = 6f;
+  public LeanTweenType tweenType = LeanTweenType.pingPong;
   // Use this for initialization
   void Start()
   {

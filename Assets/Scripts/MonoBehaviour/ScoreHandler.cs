@@ -25,7 +25,7 @@ public class ScoreHandler : MonoBehaviour
         break;
       case GameState.Playing:
         if (_controller.IsRunning) break;
-        _controller.Start();
+        _controller.StartCounting();
         break;
       case GameState.GameOver:
         _controller.Stop();
