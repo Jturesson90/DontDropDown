@@ -42,11 +42,9 @@ public class GameController
         get { return _gameState; }
         private set
         {
-            Debug.Log("Value " + value + " incoming!");
             if (!hasStarted) return;
             if (_gameState != value)
             {
-                Debug.Log(value + " was new!");
                 _gameState = value;
                 if (OnGameStateChanged != null) OnGameStateChanged(value);
             }
@@ -93,7 +91,6 @@ public class GameController
     }
     public void OnPlayClicked()
     {
-        Debug.Log("GameController: OnPlayClicked() " + GameState);
         if (GameState == GameState.InMenu)
         {
             GameState = GameState.Playing;

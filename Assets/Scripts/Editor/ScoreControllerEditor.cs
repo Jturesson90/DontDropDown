@@ -12,15 +12,15 @@ public class ScoreControllerEditor : Editor
     GUILayout.BeginHorizontal("");
     if (GUILayout.Button("Start"))
     {
-      controller.StartCounting();
+      controller.StartWatcher();
     }
     if (GUILayout.Button("Stop"))
     {
-      controller.Stop();
+      controller.StopWatcher();
     }
     if (GUILayout.Button("Reset"))
     {
-      controller.Reset();
+      controller.ResetWatcher();
     }
     GUILayout.EndHorizontal();
   }

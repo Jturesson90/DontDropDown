@@ -2,16 +2,17 @@
 using System.Collections;
 using System;
 using UnityEngine.UI;
-[RequireComponent(typeof(ScoreController))]
 public class ScoreHandler : MonoBehaviour
 {
 
-    ScoreController _controller;
     public BestScoreText bestScoreText;
+    [SerializeField]
+    private ScoreController _controller;
     void Start()
     {
-        _controller = GetComponent<ScoreController>();
-        OnStateChanged(GameController.Instance.GameState);
+        if (!_controller)
+            _controller = FindObjectOfType<ScoreController>();
+        //  OnStateChanged(GameController.Instance.GameState);
     }
     private void OnEnable()
     {
@@ -27,15 +28,15 @@ public class ScoreHandler : MonoBehaviour
         switch (state)
         {
             case GameState.InMenu:
-                _controller.Reset();
+                _controller.ResetWatcher();
                 break;
             case GameState.Playing:
 
                 if (_controller.IsRunning) break;
-                _controller.StartCounting();
+                _controller.StartWatcher();
                 break;
             case GameState.GameOver:
-                _controller.Stop();
+                _controller.StopWatcher();
 
                 PlayerPrefsManager.SetHighscore(_controller.GetScore());
                 long score1 = _controller.GetScore();

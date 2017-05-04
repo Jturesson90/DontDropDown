@@ -19,7 +19,7 @@ public class ScoreController : MonoBehaviour
     {
         _scoreText = GetComponent<Text>();
         _stopwatch = new Stopwatch();
-        Reset();
+        ResetWatcher();
     }
     private void OnEnable()
     {
@@ -33,7 +33,7 @@ public class ScoreController : MonoBehaviour
         UnityEditor.EditorApplication.playmodeStateChanged -= HandleOnPlayModeChanged;
 #endif
     }
-    public void StartCounting()
+    public void StartWatcher()
     {
         print("ScoreController: StartCounting()");
         _running = true;
@@ -43,7 +43,7 @@ public class ScoreController : MonoBehaviour
     void SetUIScore()
     {
         print("ScoreController: SetUIScore()");
-      _scoreText.text = FormatTime(_stopwatch);
+        _scoreText.text = FormatTime(_stopwatch);
     }
 
     internal long GetScore()
@@ -62,16 +62,17 @@ public class ScoreController : MonoBehaviour
         }
         yield return null;
     }
-    public void Stop()
+    public void StopWatcher()
     {
-        print("ScoreController Stop");
+        print("ScoreController: Stop()");
         _running = false;
         _stopwatch.Stop();
         StopCoroutine(Runner());
         SetUIScore();
     }
-    public void Reset()
+    public void ResetWatcher()
     {
+        print("ScoreController: Reset()");
         _running = false;
         _scoreText.text = "0:00.00";
         _stopwatch.Reset();
@@ -94,9 +95,9 @@ public class ScoreController : MonoBehaviour
     {
         if (GameController.Instance.GameState != GameState.Playing) return;
         if (pauseStatus)
-            Stop();
+            StopWatcher();
         else
-            StartCounting();
+            StartWatcher();
     }
 #if UNITY_EDITOR
     void HandleOnPlayModeChanged()
