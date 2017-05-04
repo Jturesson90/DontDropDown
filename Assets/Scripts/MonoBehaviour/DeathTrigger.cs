@@ -10,9 +10,9 @@ public class DeathTrigger : MonoBehaviour
         GameController.OnGameStateChanged += OnGameStateChanged;
     }
 
-    private void OnGameStateChanged()
+    private void OnGameStateChanged(GameState gameState)
     {
-        if (GameController.Instance.GameState == GameState.Playing)
+        if (gameState == GameState.Playing)
             _triggered = false;
     }
 

@@ -17,7 +17,6 @@ public class GameController
             return _instance;
         }
     }
-
     public void StartGame()
     {
         OnPlayClicked();
@@ -25,11 +24,14 @@ public class GameController
 
     public static event Action OnPlayerHitDeathTrigger;
     public static event Action OnRestart;
-    public static event Action OnGameStateChanged;
+
+    public delegate void OnGameStateChangedDelegate(GameState gameState);
+    public static event OnGameStateChangedDelegate OnGameStateChanged;
+
     public void StartMenu()
     {
         hasStarted = true;
-        UIManager.OnPlayButtonClicked += OnPlayClicked;
+       // UIManager.OnPlayButtonClicked += OnPlayClicked;
         GameState = GameState.Intro;
     }
     private bool hasStarted = false;
@@ -40,12 +42,13 @@ public class GameController
         get { return _gameState; }
         private set
         {
+            Debug.Log("Value " + value + " incoming!");
             if (!hasStarted) return;
             if (_gameState != value)
             {
+                Debug.Log(value + " was new!");
                 _gameState = value;
-
-                if (OnGameStateChanged != null) OnGameStateChanged();
+                if (OnGameStateChanged != null) OnGameStateChanged(value);
             }
         }
     }
@@ -61,12 +64,10 @@ public class GameController
 
     public GameController()
     {
-
+        UIManager.OnPlayButtonClicked += OnPlayClicked;
     }
     public void Restart()
     {
-        Debug.Log("GameController: Restart()");
-
         if (GameState == GameState.GameOver)
         {
             GameState = GameState.Restarting;
@@ -92,11 +93,11 @@ public class GameController
     }
     public void OnPlayClicked()
     {
-        Debug.Log("GameController: OnPlayClicked()");
+        Debug.Log("GameController: OnPlayClicked() " + GameState);
         if (GameState == GameState.InMenu)
         {
             GameState = GameState.Playing;
-            UIManager.OnPlayButtonClicked -= OnPlayClicked;
+
         }
     }
     public void Death()

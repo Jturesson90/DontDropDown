@@ -20,9 +20,9 @@ public class IntroEffect : MonoBehaviour
     GameController.OnGameStateChanged += OnGameStateChanged;
   }
 
-  private void OnGameStateChanged()
+  private void OnGameStateChanged(GameState gameState)
   {
-    if (GameController.Instance.GameState == GameState.Intro)
+    if (gameState == GameState.Intro)
     {
       if (!animating)
       {

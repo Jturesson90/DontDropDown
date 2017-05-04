@@ -10,7 +10,7 @@ public abstract class UIHandler : MonoBehaviour
         GameController.OnGameStateChanged += OnGameStateChanged;
     }
 
-    protected abstract void OnGameStateChanged();
+    protected abstract void OnGameStateChanged(GameState gameState);
 
     protected void SetChildrenActive(bool active)
     {

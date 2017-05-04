@@ -4,14 +4,13 @@ using System;
 
 public class MenuUIhandler : UIHandler
 {
-  public PlayButtonHandler playButton;
-  protected override void OnGameStateChanged()
-  {
-    if (GameController.Instance.GameState == GameState.InMenu)
+    public PlayButtonHandler playButton;
+    protected override void OnGameStateChanged(GameState gameState)
     {
-      SetChildrenActive(true);
-      playButton.Reset();
-
+        if (gameState == GameState.InMenu)
+        {
+            playButton.Reset();
+            SetChildrenActive(true);
+        }
     }
-  }
 }

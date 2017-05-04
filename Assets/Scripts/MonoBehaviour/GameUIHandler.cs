@@ -4,11 +4,9 @@ using System;
 
 public class GameUIHandler : UIHandler
 {
-  protected override void OnGameStateChanged()
+  protected override void OnGameStateChanged(GameState gameState)
   {
-    var state = GameController.Instance.GameState;
-
-    if (state == GameState.Playing || state == GameState.GameOver)
+    if (gameState == GameState.Playing || gameState == GameState.GameOver)
     {
       SetChildrenActive(true);
     }

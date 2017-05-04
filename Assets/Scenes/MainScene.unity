@@ -474,6 +474,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1303284297}
     m_Modifications:
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4042355798646362, guid: 2455d401386f6c04d8eeb10e08a441a2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -513,6 +518,56 @@ Prefab:
     - target: {fileID: 4042355798646362, guid: 2455d401386f6c04d8eeb10e08a441a2, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: _tweenType
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].time
+      value: 0.66095585
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].value
+      value: -0.2870872
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].inSlope
+      value: 1.2153387
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].outSlope
+      value: 1.2153387
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114580852996969476, guid: 2455d401386f6c04d8eeb10e08a441a2,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[2].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2455d401386f6c04d8eeb10e08a441a2, type: 2}
@@ -8155,8 +8210,22 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11492742, guid: 55f259d5b573dd14395cb4cb46b51ac8, type: 2}
-      propertyPath: m_Transition
+    - target: {fileID: 192744, guid: 55f259d5b573dd14395cb4cb46b51ac8, type: 2}
+      propertyPath: m_Name
+      value: PlayButtonIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 192744, guid: 55f259d5b573dd14395cb4cb46b51ac8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000012992422080, guid: 55f259d5b573dd14395cb4cb46b51ac8,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000012992422080, guid: 55f259d5b573dd14395cb4cb46b51ac8,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8407,6 +8476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1829940856}
   - component: {fileID: 1829940857}
+  - component: {fileID: 1829940861}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -8444,6 +8514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213e3851bad097f4a99440f1d8d6ee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &1829940861
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829940855}
 --- !u!1 &1990905242
 GameObject:
   m_ObjectHideFlags: 0

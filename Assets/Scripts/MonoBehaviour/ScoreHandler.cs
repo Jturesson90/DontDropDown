@@ -10,21 +10,20 @@ public class ScoreHandler : MonoBehaviour
     public BestScoreText bestScoreText;
     void Start()
     {
-        print("ScoreHandler Start");
         _controller = GetComponent<ScoreController>();
-
+        OnStateChanged(GameController.Instance.GameState);
     }
     private void OnEnable()
     {
-        GameController.OnGameStateChanged += OnGameStateChanged;
+        GameController.OnGameStateChanged += OnStateChanged;
     }
     private void OnDisable()
     {
-        GameController.OnGameStateChanged -= OnGameStateChanged;
+        GameController.OnGameStateChanged -= OnStateChanged;
     }
-    private void OnGameStateChanged()
+    private void OnStateChanged(GameState gameState)
     {
-        var state = GameController.Instance.GameState;
+        var state = gameState;
         switch (state)
         {
             case GameState.InMenu:

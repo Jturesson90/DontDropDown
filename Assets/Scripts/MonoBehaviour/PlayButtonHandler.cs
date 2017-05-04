@@ -14,6 +14,7 @@ public class PlayButtonHandler : ButtonHandler
 
     public void Reset()
     {
+        //TODO Change Animation to LeanTween
         GetComponent<Button>().interactable = true;
         GetComponent<Animator>().SetTrigger("Normal");
     }

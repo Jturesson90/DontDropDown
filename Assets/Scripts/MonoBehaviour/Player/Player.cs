@@ -70,9 +70,9 @@ public class Player : MonoBehaviour, IRestartableCommand
     }
 
 
-    private void OnGameStateChanged()
+    private void OnGameStateChanged(GameState gameState)
     {
-        switch (GameController.Instance.GameState)
+        switch (gameState)
         {
             case GameState.Playing:
                 Begin();

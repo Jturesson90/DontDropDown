@@ -10,9 +10,8 @@ public class GameOverUIHandler : UIHandler
     public List<GameObject> gameObjectsToActivateWithDelay;
     public List<GameObject> gameObjectsToActivateWithoutDelay;
     public List<GameObject> gameObjectsToDeactivate;
-    protected override void OnGameStateChanged()
+    protected override void OnGameStateChanged(GameState gameState)
     {
-        var gameState = GameController.Instance.GameState;
         if (gameState == GameState.GameOver)
         {
             _pressed = false;
